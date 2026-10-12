@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An interactive learning resource about Mayer's Multimedia Principle, with a water-cycle example, boundary conditions, and self-check questions.">
+<title>The Multimedia Principle | Interactive Learning</title>
+<style>
+  :root{--ink:#142a3a;--muted:#526675;--paper:#f5f4ee;--card:#fffefa;--line:#dce3df;--blue:#246b78;--blue2:#d9edf0;--orange:#ecad55;--orange2:#fff0d9;--green:#2d725d;--green2:#e2f1e9;--red:#a94d3e;--red2:#fae6e1;--shadow:0 18px 50px rgba(20,42,58,.09);--radius:22px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input{font:inherit}button{cursor:pointer}a{color:inherit} :focus-visible{outline:3px solid #d8892c;outline-offset:3px}
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(245,244,238,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,42,58,.09)}.nav{max-width:1120px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:850;letter-spacing:-.04em;white-space:nowrap}.brand span{color:var(--blue)}.navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.navlinks a{text-decoration:none;font-size:.86rem;font-weight:700;color:var(--muted)}.navlinks a:hover{color:var(--blue)}
+  .wrap{max-width:1120px;margin:auto;padding:0 22px}.hero{padding:68px 0 48px;position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:42px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem}.dot{width:9px;height:9px;border-radius:50%;background:var(--orange);display:inline-block}.hero h1{font-size:clamp(2.7rem,6vw,5rem);line-height:.99;letter-spacing:-.065em;max-width:680px;margin:20px 0}.hero h1 em{color:var(--blue);font-style:normal}.lead{font-size:1.14rem;color:var(--muted);max-width:620px}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{border:1px solid var(--line);background:rgba(255,254,250,.72);padding:7px 12px;border-radius:999px;font-size:.8rem;color:var(--muted);font-weight:700}.hero-card{background:var(--ink);color:#f9fbf7;border-radius:28px;min-height:340px;padding:26px;position:relative;box-shadow:var(--shadow);overflow:hidden}.hero-card:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:#2f7580;opacity:.28;right:-70px;top:-75px}.hero-card .small-label{position:relative;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#b5d8d8;font-weight:800}.hero-phrase{position:relative;font-size:clamp(1.5rem,3.1vw,2.4rem);line-height:1.15;letter-spacing:-.045em;font-weight:800;margin:16px 0 22px;max-width:430px}.mini-flow{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.mini-node{border:1px solid #4f6976;border-radius:16px;padding:12px 10px;background:#1c3748}.mini-node b{display:block;color:#f4c778;font-size:.83rem}.mini-node span{font-size:.77rem;color:#d2e1e3}.hero-note{position:relative;border-top:1px solid #3e5965;margin-top:18px;padding-top:14px;color:#c5d5d8;font-size:.86rem}
+  section{padding:54px 0;scroll-margin-top:75px}.section-head{max-width:730px;margin-bottom:28px}.section-kicker{font-size:.76rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;letter-spacing:-.05em;margin:9px 0 14px}h3{letter-spacing:-.025em;line-height:1.2}p{margin:8px 0 13px}.sub{font-size:1.05rem;color:var(--muted)}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 5px 22px rgba(20,42,58,.025)}.card h3{margin:10px 0 8px;font-size:1.12rem}.card p{color:var(--muted);font-size:.95rem;margin-bottom:0}.iconbox{width:43px;height:43px;border-radius:14px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-size:1.2rem;font-weight:900}.number{width:30px;height:30px;border-radius:50%;background:var(--orange2);color:#83531b;display:grid;place-items:center;font-weight:900;font-size:.8rem}
+  .demo-shell{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.demo-top{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.demo-top h3{margin:0}.switcher{display:inline-flex;background:#e9eeeb;padding:4px;border-radius:999px;gap:4px}.switcher button{border:0;padding:9px 15px;border-radius:999px;background:transparent;color:var(--muted);font-weight:800;font-size:.84rem}.switcher button[aria-pressed="true"]{background:var(--ink);color:white;box-shadow:0 2px 8px rgba(20,42,58,.15)}.demo-body{padding:24px;display:grid;grid-template-columns:.82fr 1.18fr;gap:24px}.explain-panel{background:#f1f5f1;border:1px solid #e1e9e3;border-radius:20px;padding:20px;align-self:stretch}.small-caps{font-size:.73rem;font-weight:850;color:var(--green);text-transform:uppercase;letter-spacing:.11em}.explain-panel h4{font-size:1.3rem;letter-spacing:-.03em;margin:8px 0}.explain-panel p{font-size:.95rem;color:var(--muted)}.callout{margin-top:16px;padding:13px 14px;background:white;border-left:3px solid var(--orange);border-radius:0 12px 12px 0;color:var(--ink);font-size:.88rem}.cycle-wrap{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#f6fbfb;min-width:0}.cycle-header{padding:13px 16px;display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #dce9e8;font-size:.84rem;font-weight:800}.state-label{color:var(--blue);background:#dceff0;padding:4px 9px;border-radius:999px;font-size:.73rem}.cycle-svg{display:block;width:100%;height:auto;max-height:330px}.cycle-svg text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}.cycle-svg .stage{opacity:.65;transition:opacity .2s,filter .2s}.cycle-svg .stage.active{opacity:1;filter:drop-shadow(0 2px 2px rgba(20,42,58,.16))}.cycle-svg .stage.active text{font-weight:900}.stage-controls{display:flex;gap:8px;flex-wrap:wrap;padding:14px;border-top:1px solid #dce9e8;background:#fffefa}.stage-controls button{border:1px solid var(--line);background:white;border-radius:999px;padding:8px 12px;font-size:.82rem;font-weight:800;color:var(--muted)}.stage-controls button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:white}.stage-note{font-size:.87rem;color:var(--muted);padding:0 15px 14px;background:#fffefa;min-height:52px;margin:0}
+  .theory-band{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:15px}.theory-box{padding:19px 20px;border-radius:18px;background:var(--blue2)}.theory-box:nth-child(2){background:var(--orange2)}.theory-box h3{font-size:1rem;margin:0 0 6px}.theory-box p{font-size:.9rem;color:var(--muted);margin:0}
+  .boundary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.boundary{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}.boundary button{width:100%;text-align:left;border:0;background:transparent;padding:19px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--ink);font-weight:850}.boundary button .plus{font-size:1.25rem;color:var(--blue);transition:transform .2s}.boundary button[aria-expanded="true"] .plus{transform:rotate(45deg)}.boundary .detail{padding:0 20px 20px;color:var(--muted);font-size:.94rem}.boundary .detail[hidden]{display:none}.truth{display:inline-block;border-radius:999px;padding:4px 8px;background:var(--orange2);color:#84541c;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-right:6px;font-weight:850}
+  .quiz-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:20px;align-items:start}.quiz-intro{background:var(--ink);color:white;border-radius:22px;padding:25px}.quiz-intro p{color:#c8d8dd}.quiz-intro .big{font-size:2.8rem;line-height:1;font-weight:900;letter-spacing:-.06em;color:#f3c77a}.quiz-list{display:grid;gap:14px}.question{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}.question h3{margin:0 0 14px;font-size:1.03rem}.answers{display:grid;gap:8px}.answer{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);background:white;padding:10px 12px;border-radius:12px;color:var(--muted);font-size:.92rem;text-align:left;width:100%}.answer:hover{border-color:#8dbac0}.answer.selected{border-color:var(--blue);background:#eff8f8;color:var(--ink)}.answer.correct{border-color:#77ae91;background:var(--green2);color:#214d3d}.answer.incorrect{border-color:#d89a8e;background:var(--red2);color:#74382e}.letter{display:grid;place-items:center;flex:none;border:1px solid #cfdad8;border-radius:7px;width:24px;height:24px;font-size:.75rem;font-weight:900}.feedback{margin-top:11px;font-size:.87rem;font-weight:700;min-height:20px}.feedback:empty{display:none}.quiz-footer{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.btn-primary,.btn-secondary{border:0;border-radius:999px;padding:12px 18px;font-weight:850}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#1a5662}.btn-secondary{background:#e8eeea;color:var(--ink)}.score{font-weight:850;color:var(--green)}
+  .builder{background:#e7f0ea;border:1px solid #d2e1d7;border-radius:26px;padding:26px}.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field label{display:block;font-size:.83rem;font-weight:850;margin-bottom:6px}.field input{width:100%;border:1px solid #c7d7cd;background:white;border-radius:12px;padding:12px 13px;color:var(--ink)}.builder-action{margin-top:15px}.generated{margin-top:17px;background:#fffefa;border:1px solid #d2e1d7;border-radius:16px;padding:16px;color:var(--muted)}.generated strong{color:var(--ink)}.generated[hidden]{display:none}
+  .takeaway{background:var(--blue);color:white;padding:34px;border-radius:26px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px}.takeaway h2{font-size:clamp(1.7rem,3vw,2.5rem);margin:8px 0}.takeaway p{color:#d7e9e9;max-width:690px;margin-bottom:0}.takeaway .pill{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:white}.refs{color:var(--muted);font-size:.85rem;padding:32px 0 42px}.refs a{color:var(--blue)}.footerline{border-top:1px solid var(--line);padding-top:15px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+  @media(max-width:800px){.hero-grid,.demo-body,.quiz-layout{grid-template-columns:1fr}.hero{padding-top:44px}.hero-card{min-height:auto}.grid3{grid-template-columns:1fr}.boundary-grid,.theory-band{grid-template-columns:1fr}.hero-card{padding:23px}.demo-body{padding:16px}.nav{align-items:flex-start}.navlinks{gap:9px}.navlinks a{font-size:.78rem}.takeaway{grid-template-columns:1fr}.builder-grid{grid-template-columns:1fr}}
+  @media(max-width:480px){.nav{padding:10px 14px}.navlinks{max-width:210px}.wrap{padding:0 15px}.hero h1{font-size:2.75rem}.mini-flow{gap:6px}.mini-node{padding:10px 7px}.mini-node span{font-size:.7rem}.demo-top{padding:17px}.switcher{width:100%}.switcher button{flex:1;padding:8px 5px}.cycle-header{align-items:flex-start;flex-direction:column}.takeaway{padding:24px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top" style="text-decoration:none">LEARN<span>/</span>DESIGN</a>
+    <div class="navlinks"><a href="#principle">The idea</a><a href="#demo">Try the example</a><a href="#boundaries">Boundaries</a><a href="#quiz">Quick quiz</a></div>
+  </nav>
+</header>
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Mayer's Multimedia Learning · Principle 01</div>
+        <h1>Words and pictures, <em>working together.</em></h1>
+        <p class="lead">Explore why combining words with relevant visuals can help people learn—and why simply adding pictures is not enough.</p>
+        <div class="hero-meta"><span class="pill">5-minute interactive lesson</span><span class="pill">Example: the water cycle</span><span class="pill">Includes boundary conditions</span></div>
+      </div>
+      <div class="hero-card" aria-label="Summary of the principle">
+        <div class="small-label">The Multimedia Principle</div>
+        <div class="hero-phrase">People generally learn more deeply from <span style="color:#f3c77a">words + pictures</span> than from words alone.</div>
+        <div class="mini-flow">
+          <div class="mini-node"><b>WORDS</b><span>Explain the idea</span></div>
+          <div class="mini-node"><b>PICTURES</b><span>Show relationships</span></div>
+          <div class="mini-node"><b>LEARNING</b><span>Connect both</span></div>
+        </div>
+        <div class="hero-note">The goal is not to decorate a lesson. It is to help learners make sense of the content.</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="principle">
+    <div class="wrap">
+      <div class="section-head"><div class="section-kicker">01 / Understand the idea</div><h2>What does the principle mean?</h2><p class="sub">Mayer's Multimedia Principle suggests that learners can understand an explanation better when relevant words and pictures work together than when the same explanation is presented with words alone.</p></div>
+      <div class="grid3">
+        <article class="card"><div class="iconbox">Aa</div><h3>Words explain</h3><p>Written text or spoken narration can name concepts, describe causes and explain what happens.</p></article>
+        <article class="card"><div class="iconbox">◇</div><h3>Pictures show</h3><p>Diagrams, illustrations and animations can make structures, sequences and relationships easier to see.</p></article>
+        <article class="card"><div class="iconbox">↔</div><h3>Learners connect</h3><p>Learning involves actively connecting the verbal explanation with the visual representation—not just looking or listening.</p></article>
+      </div>
+      <div class="theory-band">
+        <div class="theory-box"><h3>Dual channels & limited capacity</h3><p>People process verbal and pictorial information through related but distinct systems, and each has limited capacity. A design should not overload either one.</p></div>
+        <div class="theory-box"><h3>Active processing</h3><p>Learners select important information, organise it into a mental model, and integrate the models with each other and with what they already know.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" style="background:#eeefe8">
+    <div class="wrap">
+      <div class="section-head"><div class="section-kicker">02 / Learn through an example</div><h2>Same topic. Different design.</h2><p class="sub">Explore two ways to teach the water cycle. Switch between the designs, then select each stage of the diagram to connect the words with what you see.</p></div>
+      <div class="demo-shell">
+        <div class="demo-top"><h3>How does water move through the cycle?</h3><div class="switcher" role="group" aria-label="Compare lesson designs"><button id="wordsOnlyBtn" aria-pressed="false">Words alone</button><button id="multimediaBtn" aria-pressed="true">Words + picture</button></div></div>
+        <div class="demo-body">
+          <div class="explain-panel" aria-live="polite">
+            <div class="small-caps" id="designLabel">Design B · Multimedia</div>
+            <h4 id="designHeading">See the process as you read</h4>
+            <p id="designText">The Sun warms water, causing it to evaporate. Water vapour rises and cools, forming clouds through condensation. Water then returns to Earth as precipitation.</p>
+            <div class="callout" id="designCallout">The diagram makes the stages and their relationships visible while the words explain what each stage means.</div>
+          </div>
+          <div class="cycle-wrap" id="cycleWrap">
+            <div class="cycle-header"><span>THE WATER CYCLE</span><span class="state-label" id="diagramLabel">Relevant visual</span></div>
+            <svg class="cycle-svg" viewBox="0 0 620 355" role="img" aria-labelledby="cycleTitle cycleDesc">
+              <title id="cycleTitle">An illustrated water cycle</title><desc id="cycleDesc">Sun warms a body of water. Water evaporates and rises, cools to form clouds, and falls as rain.</desc>
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9f6f7"/><stop offset="1" stop-color="#f8fbf7"/></linearGradient>
+                <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#64b7c1"/><stop offset="1" stop-color="#2b7f91"/></linearGradient>
+                <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#247c8d"/></marker>
+                <marker id="arrowGold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d79535"/></marker>
+              </defs>
+              <rect x="0" y="0" width="620" height="355" fill="url(#sky)"/>
+              <circle cx="86" cy="62" r="27" fill="#f2c064"/><g stroke="#e8aa42" stroke-width="3" stroke-linecap="round"><path d="M86 20v-9M86 103v-9M44 62h-9M137 62h-9M56 32l-7-7M116 92l7 7M116 32l7-7M56 92l-7 7"/></g>
+              <path d="M0 265 Q100 250 205 266 T415 262 T620 259 L620 355 L0 355Z" fill="#d6e8c9"/>
+              <path d="M0 292 Q100 278 205 293 T415 290 T620 287 L620 355 L0 355Z" fill="url(#sea)"/>
+              <path d="M0 307 Q80 300 160 309 T320 307 T480 306 T620 304" fill="none" stroke="#b4e2e3" stroke-width="3" opacity=".9"/>
+              <g class="stage" id="stage-evaporation">
+                <path d="M180 270 C165 228 193 205 181 161" fill="none" stroke="#d79535" stroke-width="4" stroke-dasharray="7 7" marker-end="url(#arrowGold)"/>
+                <path d="M220 278 C205 245 233 215 221 189" fill="none" stroke="#d79535" stroke-width="3" stroke-dasharray="6 7" marker-end="url(#arrowGold)"/>
+                <rect x="110" y="142" width="142" height="33" rx="16" fill="#fff0d9" stroke="#edcf98"/><text x="181" y="163" text-anchor="middle" font-size="14" fill="#87591b">Evaporation</text>
+              </g>
+              <g class="stage" id="stage-condensation">
+                <path d="M233 112 C286 79 328 80 363 102" fill="none" stroke="#247c8d" stroke-width="4" stroke-dasharray="7 7" marker-end="url(#arrowBlue)"/>
+                <g fill="#ffffff" stroke="#c2dce0" stroke-width="2"><circle cx="371" cy="89" r="27"/><circle cx="402" cy="72" r="34"/><circle cx="439" cy="92" r="28"/><rect x="368" y="89" width="74" height="25" rx="12" stroke="none"/></g>
+                <rect x="316" y="126" width="170" height="33" rx="16" fill="#dceff0" stroke="#acd7dc"/><text x="401" y="147" text-anchor="middle" font-size="14" fill="#1c6470">Condensation</text>
+              </g>
+              <g class="stage" id="stage-precipitation">
+                <path d="M438 132 C451 171 451 198 438 229" fill="none" stroke="#247c8d" stroke-width="4" stroke-dasharray="7 7" marker-end="url(#arrowBlue)"/>
+                <g fill="#4d9eb0"><path d="M420 169 l-5 12 a4 4 0 0 0 8 0Z"/><path d="M447 183 l-5 12 a4 4 0 0 0 8 0Z"/><path d="M430 204 l-5 12 a4 4 0 0 0 8 0Z"/><path d="M461 212 l-5 12 a4 4 0 0 0 8 0Z"/></g>
+                <rect x="458" y="224" width="143" height="33" rx="16" fill="#dceff0" stroke="#acd7dc"/><text x="529" y="245" text-anchor="middle" font-size="14" fill="#1c6470">Precipitation</text>
+              </g>
+              <text x="32" y="337" font-size="13" font-weight="700" fill="#ffffff">WATER</text><text x="513" y="30" font-size="11" font-weight="800" fill="#66838b" letter-spacing="1.5">ILLUSTRATION</text>
+            </svg>
+            <div class="stage-controls" role="group" aria-label="Explore each water-cycle stage"><button data-stage="evaporation" aria-pressed="true">1. Evaporation</button><button data-stage="condensation" aria-pressed="false">2. Condensation</button><button data-stage="precipitation" aria-pressed="false">3. Precipitation</button></div>
+            <p class="stage-note" id="stageNote" aria-live="polite">Heat gives water energy to change into water vapour, which rises into the air.</p>
+          </div>
+        </div>
+      </div>
+      <div class="theory-band">
+        <div class="theory-box"><h3>What makes this educational?</h3><p>The diagram represents the process. The labels and explanation are linked to the relevant parts, and stage buttons direct attention instead of asking learners to search randomly.</p></div>
+        <div class="theory-box"><h3>Think before you move on</h3><p>Why might the diagram help you understand the cycle better than the paragraph alone? Try explaining one connection between the text and a visual element.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boundaries">
+    <div class="wrap">
+      <div class="section-head"><div class="section-kicker">03 / Think critically</div><h2>Boundary conditions</h2><p class="sub">The Multimedia Principle is a design guideline, not a promise that every picture improves learning. Open each point to explore when the benefit may be smaller or when the design needs extra care.</p></div>
+      <div class="boundary-grid">
+        <article class="boundary"><button aria-expanded="false" aria-controls="bd1"><span>1. Prior knowledge</span><span class="plus">+</span></button><div class="detail" id="bd1" hidden><span class="truth">It depends</span>Novices may benefit from visuals that make unfamiliar relationships visible. Learners who already know the topic may gain less from an additional diagram, especially if it merely repeats what they know. Consider what learners already understand.</div></article>
+        <article class="boundary"><button aria-expanded="false" aria-controls="bd2"><span>2. Relevance of the picture</span><span class="plus">+</span></button><div class="detail" id="bd2" hidden><span class="truth">Relevance matters</span>A picture should explain a concept, reveal a relationship or show a process. Decorative images can divert attention; an inaccurate or ambiguous image can create a misconception. Choose visuals for what they teach, not just for appearance.</div></article>
+        <article class="boundary"><button aria-expanded="false" aria-controls="bd3"><span>3. Complexity & cognitive load</span><span class="plus">+</span></button><div class="detail" id="bd3" hidden><span class="truth">Keep it manageable</span>A dense diagram can be harder to understand than a clear verbal explanation. Simplify the visual, label important parts, guide attention and reveal a complex process in stages when needed.</div></article>
+        <article class="boundary"><button aria-expanded="false" aria-controls="bd4"><span>4. Learner needs & accessibility</span><span class="plus">+</span></button><div class="detail" id="bd4" hidden><span class="truth">Design inclusively</span>Do not rely on colour alone, provide meaningful text alternatives for important visuals, use readable labels and consider language level and accessibility. Some learners may need a different or additional way to access the same idea.</div></article>
+      </div>
+      <div class="callout" style="margin-top:18px"><strong>Remember:</strong> The claim is not “more media is always better.” It is that words and relevant pictures can support deeper learning when they are designed to work together and suit the learner and task.</div>
+    </div>
+  </section>
+
+  <section id="quiz" style="background:#eeefe8">
+    <div class="wrap">
+      <div class="section-head"><div class="section-kicker">04 / Check your understanding</div><h2>Can you spot good multimedia design?</h2><p class="sub">Choose an answer for each question. You will get feedback straight away.</p></div>
+      <div class="quiz-layout">
+        <aside class="quiz-intro"><div class="big">3 Qs</div><h3>Pause and retrieve</h3><p>Retrieving an idea helps you check whether you understand it. If you miss one, revisit the explanation and try again.</p><p><strong>Target:</strong> explain why a picture helps, not merely say that it makes a slide look better.</p></aside>
+        <div class="quiz-list">
+          <article class="question" data-q="1" data-answer="b"><h3>1. Which design best follows the Multimedia Principle?</h3><div class="answers"><button class="answer" data-option="a"><span class="letter">A</span><span>A slide with a paragraph and several decorative stock photos.</span></button><button class="answer" data-option="b"><span class="letter">B</span><span>A concise explanation beside a diagram that shows the process being explained.</span></button><button class="answer" data-option="c"><span class="letter">C</span><span>A colourful animation with no explanation or labels.</span></button></div><div class="feedback" aria-live="polite"></div></article>
+          <article class="question" data-q="2" data-answer="c"><h3>2. Why can words and pictures support learning?</h3><div class="answers"><button class="answer" data-option="a"><span class="letter">A</span><span>Pictures remove the need to think.</span></button><button class="answer" data-option="b"><span class="letter">B</span><span>More information always produces better learning.</span></button><button class="answer" data-option="c"><span class="letter">C</span><span>Learners can organise verbal and visual information and connect the two.</span></button></div><div class="feedback" aria-live="polite"></div></article>
+          <article class="question" data-q="3" data-answer="a"><h3>3. Which is an important boundary condition?</h3><div class="answers"><button class="answer" data-option="a"><span class="letter">A</span><span>An irrelevant or confusing picture may distract rather than help.</span></button><button class="answer" data-option="b"><span class="letter">B</span><span>Every topic must contain an image, no matter what it is.</span></button><button class="answer" data-option="c"><span class="letter">C</span><span>Experienced learners always need the same diagrams as novices.</span></button></div><div class="feedback" aria-live="polite"></div></article>
+          <div class="quiz-footer"><button class="btn-secondary" id="resetQuiz">Try again</button><span class="score" id="quizScore" aria-live="polite">0 of 3 answered correctly</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="wrap">
+      <div class="section-head"><div class="section-kicker">05 / Apply the principle</div><h2>Plan a tiny multimedia lesson</h2><p class="sub">Use the prompts to apply the principle to a topic you teach or study.</p></div>
+      <div class="builder">
+        <div class="builder-grid">
+          <div class="field"><label for="topic">My learning topic</label><input id="topic" placeholder="e.g. how a plant grows"></div>
+          <div class="field"><label for="visual">What will the picture show?</label><input id="visual" placeholder="e.g. the stages from seed to sprout"></div>
+          <div class="field"><label for="words">What will the words explain?</label><input id="words" placeholder="e.g. what a seed needs to germinate"></div>
+          <div class="field"><label for="check">How will learners actively think?</label><input id="check" placeholder="e.g. predict what happens without water"></div>
+        </div>
+        <div class="builder-action"><button class="btn-primary" id="makePlan">Build my design idea</button></div>
+        <div class="generated" id="planOutput" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="takeaway"><div><div class="eyebrow" style="color:#f3c77a"><span class="dot"></span> Key takeaway</div><h2>Design for sense-making, not decoration.</h2><p>Choose visuals that teach something, keep them manageable, and help learners connect what they read or hear with what they see. Then ask a question that makes them use that connection.</p></div><span class="pill">Words + relevant visuals + active processing</span></div>
+      <div class="refs"><div class="footerline"><div><strong>Core reading</strong><br>Mayer, R. E. (2009). <em>Multimedia Learning</em> (2nd ed.). Cambridge University Press.</div><div><strong>Remember</strong><br>This resource summarises a design principle; it is not a substitute for reading the assigned chapter.</div></div></div>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  const byId=id=>document.getElementById(id);
+  const wordsBtn=byId('wordsOnlyBtn'), multiBtn=byId('multimediaBtn');
+  const stageDetails={
+    evaporation:{text:'Heat gives water energy to change into water vapour, which rises into the air.',heading:'Evaporation: water rises',label:'1 / Evaporation'},
+    condensation:{text:'As water vapour cools, it condenses into tiny droplets that form clouds.',heading:'Condensation: clouds form',label:'2 / Condensation'},
+    precipitation:{text:'When water droplets or ice crystals become heavy enough, water falls as rain, snow or other precipitation.',heading:'Precipitation: water returns',label:'3 / Precipitation'}
+  };
+  let activeStage='evaporation';
+  function setDesign(mode){const isMulti=mode==='multi';wordsBtn.setAttribute('aria-pressed',String(!isMulti));multiBtn.setAttribute('aria-pressed',String(isMulti));byId('cycleWrap').style.display=isMulti?'block':'none';byId('designLabel').textContent=isMulti?'Design B · Multimedia':'Design A · Words alone';byId('designHeading').textContent=isMulti?'See the process as you read':'Imagine the process from a paragraph';byId('designText').textContent=isMulti?'The Sun warms water, causing it to evaporate. Water vapour rises and cools, forming clouds through condensation. Water then returns to Earth as precipitation.':'The Sun heats water on Earth. The water evaporates and rises as vapour. As it cools, it condenses into clouds. Water then falls back to Earth as precipitation.';byId('designCallout').textContent=isMulti?'The diagram makes the stages and their relationships visible while the words explain what each stage means.':'This explanation contains the key information, but the learner has to construct the whole process mentally without a visual representation.';}
+  wordsBtn.addEventListener('click',()=>setDesign('words'));multiBtn.addEventListener('click',()=>setDesign('multi'));
+  function setStage(stage){activeStage=stage;document.querySelectorAll('.cycle-svg .stage').forEach(el=>el.classList.toggle('active',el.id==='stage-'+stage));document.querySelectorAll('[data-stage]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.stage===stage)));byId('stageNote').textContent=stageDetails[stage].text;byId('diagramLabel').textContent=stageDetails[stage].label;}
+  document.querySelectorAll('[data-stage]').forEach(btn=>btn.addEventListener('click',()=>setStage(btn.dataset.stage)));
+  document.querySelectorAll('.boundary button').forEach(btn=>btn.addEventListener('click',()=>{const panel=byId(btn.getAttribute('aria-controls'));const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!open));panel.hidden=open;}));
+  const feedbackTexts={
+    '1':{b:'Correct. The words and visual have complementary roles: one explains, the other shows the process.',a:'Not quite. Decorative pictures may attract attention without helping the learner understand the concept.',c:'Not quite. An animation can be engaging, but without a relevant explanation it may not make the process clear.'},
+    '2':{c:'Correct. Learners actively organise and integrate verbal and visual representations.',a:'Not quite. Learners still need to select, organise and connect information actively.',b:'Not quite. Working-memory capacity is limited; adding information can overload rather than help.'},
+    '3':{a:'Correct. Relevance, clarity and learner needs affect whether a visual helps.',b:'Not quite. A visual should serve the learning goal; a picture is not automatically useful.',c:'Not quite. Prior knowledge can change how much extra support a learner needs.'}
+  };
+  function updateScore(){let correct=0,answered=0;document.querySelectorAll('.question').forEach(q=>{if(q.dataset.selected){answered++;if(q.dataset.selected===q.dataset.answer)correct++;}});byId('quizScore').textContent=correct+' of 3 answered correctly'+(answered<3?' · '+answered+' answered':'');}
+  document.querySelectorAll('.question .answer').forEach(btn=>btn.addEventListener('click',()=>{const q=btn.closest('.question');q.dataset.selected=btn.dataset.option;q.querySelectorAll('.answer').forEach(b=>{b.classList.remove('selected','correct','incorrect');b.setAttribute('aria-pressed','false')});btn.classList.add('selected');btn.setAttribute('aria-pressed','true');const isCorrect=btn.dataset.option===q.dataset.answer;btn.classList.add(isCorrect?'correct':'incorrect');q.querySelector('.feedback').textContent=feedbackTexts[q.dataset.q][btn.dataset.option];updateScore();}));
+  byId('resetQuiz').addEventListener('click',()=>{document.querySelectorAll('.question').forEach(q=>{delete q.dataset.selected;q.querySelectorAll('.answer').forEach(b=>{b.classList.remove('selected','correct','incorrect');b.setAttribute('aria-pressed','false')});q.querySelector('.feedback').textContent='';});updateScore();});
+  byId('makePlan').addEventListener('click',()=>{const topic=byId('topic').value.trim(),visual=byId('visual').value.trim(),words=byId('words').value.trim(),check=byId('check').value.trim();const output=byId('planOutput');if(!topic||!visual||!words||!check){output.hidden=false;output.innerHTML='<strong>Complete the four prompts.</strong><p>Please add a topic, a visual, what the words will explain and a question or task that makes learners think.</p>';return;}output.hidden=false;output.replaceChildren();const strong=document.createElement('strong');strong.textContent='Your draft design: '+topic;const p1=document.createElement('p');p1.textContent='Visual: '+visual+'.';const p2=document.createElement('p');p2.textContent='Words: '+words+'.';const p3=document.createElement('p');p3.textContent='Active processing: ask learners to '+(check.charAt(0).toLowerCase()+check.slice(1).replace(/[.!?]+$/,''))+'.';const p4=document.createElement('p');p4.textContent='Design check: make sure the visual directly supports the explanation and does not add distracting details.';output.append(strong,p1,p2,p3,p4);});
+  // Initialise interaction states for assistive technologies and keyboard users.
+  document.querySelectorAll('.answer').forEach(b=>b.setAttribute('aria-pressed','false'));
+  setStage(activeStage);setDesign('multi');updateScore();
+})();
+</script>
+</body>
+</html>
